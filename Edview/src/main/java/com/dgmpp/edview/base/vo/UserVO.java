@@ -1,4 +1,4 @@
-package com.dgmpp.edview.vo;
+package com.dgmpp.edview.base.vo;
 
 public class UserVO {
 	

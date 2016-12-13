@@ -6,7 +6,6 @@
 <head>
  <spring:url value="/resources/js/jquery.js" var="jqueryJs" />
  <script src="${jqueryJs}"></script>
-<!-- <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Creation</title>
 </head>

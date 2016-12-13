@@ -1,4 +1,4 @@
-package com.dgmpp.edview;
+package com.dgmpp.edview.base.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dgmpp.edview.vo.UserVO;
+import com.dgmpp.edview.base.vo.UserVO;
 
 /**
  * Handles requests for the application home page.
@@ -40,32 +40,32 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "base/home";
 	}
 	
 	@RequestMapping(value = "/UserCreationForm", method = RequestMethod.GET)
 	public ModelAndView userCreation () {
 		
-		return new ModelAndView("UserCreation", "userVO", new UserVO());
+		return new ModelAndView("base/UserCreation", "userVO", new UserVO());
 	}
 	
 	@RequestMapping(value = "/HomeControllerMapping", method = RequestMethod.POST)
 	public ModelAndView homeController (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userVO") UserVO userVO) {
 		//WebUtils.getSessionAttribute(request, name);
 		System.out.println("Inside Home Controller  : " + userVO.getUserName());
-		return new ModelAndView("UserCreation", "userVO", userVO);
+		return new ModelAndView("base/UserCreation", "userVO", new UserVO());
 	}
 	
 	@RequestMapping(value = "/HomeControllerAjaxMapping", method = RequestMethod.POST)
 	public ModelAndView homeAjaxController (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userVO") UserVO userVO) {
 		System.out.println("Inside Home Ajax Controller  : " + userVO.getUserName());
-		return new ModelAndView("UserCreation", "userVO", userVO);
+		return new ModelAndView("base/UserCreation", "userVO", userVO);
 	}
 	
-	@RequestMapping(value = "/DashboardHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/base/DashboardHome", method = RequestMethod.GET)
 	public String dashboardHome (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userVO") UserVO userVO) {
 		System.out.println("inside dashboard");
-		return "Dashboard";
+		return "base/Dashboard";
 	}
 	
 }
