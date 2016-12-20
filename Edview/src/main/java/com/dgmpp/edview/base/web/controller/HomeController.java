@@ -1,4 +1,4 @@
-package com.dgmpp.edview.base.controller;
+package com.dgmpp.edview.base.web.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -22,6 +22,7 @@ import com.dgmpp.edview.base.vo.UserVO;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping(value = "/base")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -40,7 +41,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "base/home";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/UserCreationForm", method = RequestMethod.GET)
@@ -62,10 +63,10 @@ public class HomeController {
 		return new ModelAndView("base/UserCreation", "userVO", userVO);
 	}
 	
-	@RequestMapping(value = "/base/DashboardHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/DashboardHome", method = RequestMethod.GET)
 	public String dashboardHome (HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userVO") UserVO userVO) {
 		System.out.println("inside dashboard");
-		return "base/Dashboard";
+		return "dashboard";
 	}
 	
 }
